@@ -1,0 +1,24 @@
+<div class="container">
+    <h2 class="title">📅 Próximos Jogos da FURIA</h2>
+  
+    <div *ngIf="carregando" class="loading">Carregando jogos...</div>
+    <div *ngIf="erro" class="erro">{{ erro }}</div>
+  
+    <ul *ngIf="jogos.length > 0 && !carregando" class="jogos-lista">
+      <li *ngFor="let jogo of jogos" class="jogo-item">
+        <div class="jogo-times">
+          <strong>{{ jogo.match.teams[0].name }}</strong>
+          <span class="versus">vs</span>
+          <strong>{{ jogo.match.teams[1].name }}</strong>
+        </div>
+        <div class="jogo-data">
+          📆 {{ jogo.startTime | date:'fullDate' }} às {{ jogo.startTime | date:'shortTime' }}
+        </div>
+      </li>
+    </ul>
+  
+    <div *ngIf="!carregando && jogos.length === 0" class="sem-jogos">
+      Nenhum jogo da FURIA encontrado.
+    </div>
+  </div>
+  

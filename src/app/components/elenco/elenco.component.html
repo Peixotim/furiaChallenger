@@ -1,0 +1,39 @@
+<section class="bg-white dark:bg-[#1c1c1c] py-8">
+    <!-- Botões de seleção -->
+    <div class="flex justify-center space-x-6 mb-6">
+      <button (click)="selectGame('lol')" class="p-3 rounded bg-gray-200 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 transition">
+        <img src="assets/timeFuria2/lol.png" alt="LoL" class="w-9 h-9" />
+      </button>
+      <!-- <button (click)="selectGame('valorant')" class="p-3 rounded bg-gray-200 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 transition">
+        <img src="assets/timeFuria2/valorant.png" alt="Valorant" class="w-9 h-9" />
+      </button> -->
+      <button (click)="selectGame('cs')" class="p-3 rounded bg-gray-200 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 transition">
+        <img src="assets/timeFuria2/cs2.png" alt="Counter-Strike" class="w-9 h-9" />
+      </button>
+    </div>
+  
+    <!-- Grade de cards estilo FURIA -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
+      <div *ngFor="let player of filteredPlayers"
+           class="relative flex h-[250px] bg-black rounded-xl overflow-hidden shadow-lg text-white transform hover:scale-[1.02] hover:shadow-xl transition duration-300 ease-in-out group">
+        
+        <!-- Fundo com logo da FURIA + gradiente -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black to-transparent opacity-90 z-0"></div>
+
+     
+        <!-- Texto à esquerda -->
+        <div class="flex flex-col justify-center pl-6 z-20 w-1/2">
+          <h2 class="text-3xl font-extrabold text-white drop-shadow-md transition-colors duration-300 hover:text-yellow-500 ">{{ player.name }}</h2>
+          <p class="text-sm text-amber-500 uppercase tracking-wider">{{ player.realName }}</p>
+        </div>
+  
+        <!-- Imagem do jogador à direita -->
+        <div class="flex items-end justify-end w-1/2 z-20 pr-4">
+          <img [src]="player.image"
+               alt="{{ player.name }}"
+               class="w-[300px] max-h-[240px] object-contain" />
+        </div>
+      </div>
+    </div>
+  </section>
+  
